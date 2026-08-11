@@ -36,7 +36,7 @@ const checking = ref(false);
 async function retry() {
   checking.value = true;
   try {
-    await fetch("https://itline-django-9s85.onrender.com/api/teachers/", {
+    await fetch("https://demo-django-c3eh.onrender.com/api/teachers/", {
       signal: AbortSignal.timeout(5000),
     });
     // Internet bor — orqaga qayt

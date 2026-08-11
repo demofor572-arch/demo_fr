@@ -2,7 +2,7 @@
 import { ref, onMounted } from "vue";
 import AppIcon from "@/components/AppIcon.vue";
 
-const API = "https://itline-django-9s85.onrender.com/api";
+const API = "https://demo-django-c3eh.onrender.com/api";
 const user = JSON.parse(localStorage.getItem("user") || "null");
 
 const newsList = ref([]);

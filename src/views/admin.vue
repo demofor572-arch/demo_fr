@@ -4,7 +4,7 @@ import { useRouter } from "vue-router";
 import AppIcon from "@/components/AppIcon.vue";
 
 // ─── Constants ───────────────────────────────────────────────
-const API = "https://itline-django-9s85.onrender.com/api";
+const API = "https://demo-django-c3eh.onrender.com/api";
 
 // ─── Router & Auth ───────────────────────────────────────────
 const router = useRouter();

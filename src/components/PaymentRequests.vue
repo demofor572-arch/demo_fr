@@ -8,7 +8,7 @@ import AppIcon from "@/components/AppIcon.vue";
  * chek rasmi o'chadi. Rad etsa ham rasm o'chadi.
  */
 const emit = defineEmits(["accepted"]);
-const API = "https://itline-django-9s85.onrender.com/api";
+const API = "https://demo-django-c3eh.onrender.com/api";
 
 const today = new Date().toISOString().slice(0, 10);
 const thisMonth = new Date().toISOString().slice(0, 7);

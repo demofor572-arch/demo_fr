@@ -10,7 +10,7 @@ import StudentPayNow from "@/components/StudentPayNow.vue";
 import { authHeaders } from "@/utils/managerApi";
 
 const router = useRouter();
-const API = "https://itline-django-9s85.onrender.com/api";
+const API = "https://demo-django-c3eh.onrender.com/api";
 const user = JSON.parse(localStorage.getItem("user") || "{}");
 if (!user?.id) router.push("/login");
 

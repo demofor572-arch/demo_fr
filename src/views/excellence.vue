@@ -18,7 +18,7 @@ import { authHeaders, can, isSuper } from "@/utils/managerApi";
 import { readCache, writeCache } from "@/utils/cache";
 
 const router = useRouter();
-const API = "https://itline-django-9s85.onrender.com/api";
+const API = "https://demo-django-c3eh.onrender.com/api";
 
 const user = JSON.parse(localStorage.getItem("user") || "null");
 // Menejer ham shu panelga kiradi (u eng yuqori daraja)

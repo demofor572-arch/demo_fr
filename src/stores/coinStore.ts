@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { useUiStore } from "./uiStore";
 
-const API = "https://itline-django-9s85.onrender.com/api";
+const API = "https://demo-django-c3eh.onrender.com/api";
 
 // Backenddagi Student modeliga mos keladi (Teacher emas — coin faqat studentlarda)
 // coinStore.ts ichida

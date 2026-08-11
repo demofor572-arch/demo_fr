@@ -12,7 +12,7 @@ const props = defineProps({
 });
 const emit = defineEmits(["submitted"]);
 
-const API = "https://itline-django-9s85.onrender.com/api";
+const API = "https://demo-django-c3eh.onrender.com/api";
 
 const open = ref(false);
 const card = ref({ card_number: "", card_holder: "", note: "" });

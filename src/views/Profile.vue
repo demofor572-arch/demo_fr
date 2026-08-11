@@ -7,7 +7,7 @@ import MoonTwotoneIcon from "~icons/line-md/moon-twotone";
 import AppIcon from "@/components/AppIcon.vue";
 import { logout } from "@/utils/managerApi";
 
-const API = "https://itline-django-9s85.onrender.com/api";
+const API = "https://demo-django-c3eh.onrender.com/api";
 const router = useRouter();
 const { theme, toggleTheme } = useTheme();
 

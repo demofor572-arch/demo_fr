@@ -4,7 +4,7 @@ import AppIcon from "@/components/AppIcon.vue";
 import AttendanceBoard from "@/components/AttendanceBoard.vue";
 import { authHeaders, logout } from "@/utils/managerApi";
 
-const API = "https://itline-django-9s85.onrender.com/api";
+const API = "https://demo-django-c3eh.onrender.com/api";
 const user = JSON.parse(localStorage.getItem("user") || "null");
 
 const groups = ref([]);

@@ -5,7 +5,7 @@ import { normalizePhone } from "../utils/phone.js";
 import AppIcon from "@/components/AppIcon.vue";
 
 const router = useRouter();
-const API = "https://itline-django-9s85.onrender.com/api";
+const API = "https://demo-django-c3eh.onrender.com/api";
 
 const ROLE_PASSWORDS = {
   excellence: "excellence2024",
