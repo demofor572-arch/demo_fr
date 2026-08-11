@@ -1,0 +1,41 @@
+{
+  "name": "attendance",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "build-only": "vite build",
+    "type-check": "vue-tsc --build"
+  },
+  "dependencies": {
+    "@iconify-vue/fluent-mdl2": "^1.0.3",
+    "@iconify-vue/solar": "^1.0.4",
+    "@tailwindcss/vite": "^4.1.18",
+    "axios": "^1.18.1",
+    "pinia": "^2.3.1",
+    "tailwindcss": "^4.3.1",
+    "vue": "^3.5.27",
+    "vue-router": "^4.2.2"
+  },
+  "devDependencies": {
+    "@iconify-json/line-md": "^1.2.16",
+    "@iconify-json/lucide": "^1.2.118",
+    "@iconify-json/solar": "^1.2.5",
+    "@tsconfig/node24": "^24.0.4",
+    "@types/node": "^24.10.9",
+    "@vitejs/plugin-vue": "^6.0.3",
+    "@vue/tsconfig": "^0.8.1",
+    "npm-run-all2": "^8.0.4",
+    "typescript": "~5.9.3",
+    "unplugin-icons": "^23.0.1",
+    "vite": "^7.3.1",
+    "vite-plugin-vue-devtools": "^8.0.5",
+    "vue-tsc": "^3.2.4"
+  },
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  }
+}
