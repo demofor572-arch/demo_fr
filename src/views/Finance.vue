@@ -88,9 +88,9 @@
               {{ summary.profit >= 0 ? "+" : "" }}{{ fmt(summary.profit) }}
             </p>
             <p class="text-xs text-white/70 font-medium mt-1.5 flex items-center gap-1">
-              <span>{{
+              <span>{
                 summary.profit >= 0 ? "Ijobiy holat" : "Manfiy holat"
-              }}</span>
+              }</span>
             </p>
           </div>
         </div>
@@ -569,6 +569,8 @@ const collectionPercent = computed(() => {
     ),
   );
 });
+
+// profit comes from server in `summary.profit`
 
 const filteredPayments = computed(() => {
   if (!search.value) return monthPayments.value;
