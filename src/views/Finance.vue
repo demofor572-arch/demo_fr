@@ -88,9 +88,7 @@
               {{ summary.profit >= 0 ? "+" : "" }}{{ fmt(summary.profit) }}
             </p>
             <p class="text-xs text-white/70 font-medium mt-1.5 flex items-center gap-1">
-              <span>{{
-                summary.profit >= 0 ? "Ijobiy holat" : "Manfiy holat"
-              }}</span>
+              <span>{{ summary.profit >= 0 ? "Ijobiy holat" : "Manfiy holat" }}</span>
             </p>
           </div>
         </div>
