@@ -1,15 +1,9 @@
 <template>
   <div class="min-h-screen bg-slate-50 p-4 sm:p-6 font-sans">
-    <ManagerNav
-      title="Ustozlar"
-      subtitle="Telefon raqamni tahrirlash, o'quvchilarni ko'chirish va ustozni o'chirish"
-    />
+    <ManagerNav title="Ustozlar" subtitle="Telefon raqamni tahrirlash, o'quvchilarni ko'chirish va ustozni o'chirish" />
 
     <!-- ══════════ OGOHLANTIRISH ══════════ -->
-    <div
-      v-if="problem.length"
-      class="mb-4 rounded-xl border border-amber-200 bg-amber-50 p-4"
-    >
+    <div v-if="problem.length" class="mb-4 rounded-xl border border-amber-200 bg-amber-50 p-4">
       <p class="text-sm font-medium text-amber-800 mb-1">
         <AppIcon name="warning" /> {{ problem.length }} ta ustozning raqami
         muammoli
@@ -17,7 +11,7 @@
       <p class="text-xs text-amber-700">
         Raqami to'liq bo'lmagan ustoz tizimga kira olmaydi — quyidagi
         ro'yxatdan to'g'rilab qo'ying:
-        <span class="font-medium">{{ problem.map((t) => t.name).join(", ") }}</span>
+        <span class="font-medium">{{problem.map((t) => t.name).join(", ")}}</span>
       </p>
     </div>
 
@@ -25,26 +19,19 @@
     <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-4 mb-4">
       <p class="text-sm font-medium text-slate-700 mb-3">Yangi ustoz qo'shish</p>
       <div class="flex flex-col sm:flex-row gap-3">
-        <input
-          v-model="newTeacher.name"
-          placeholder="Ism familiya"
-          class="flex-1 border border-slate-200 bg-slate-50 focus:bg-white rounded-lg px-3 py-2 text-sm outline-none focus:border-indigo-300"
-        />
-        <input
-          v-model="newTeacher.phone"
-          placeholder="Telefon (90 123 45 67)"
-          class="flex-1 border border-slate-200 bg-slate-50 focus:bg-white rounded-lg px-3 py-2 text-sm outline-none focus:border-indigo-300 tabular-nums"
-        />
-        <button
-          @click="createTeacher"
-          :disabled="!newTeacher.name || !newTeacher.phone || busy"
-          class="px-5 py-2 rounded-lg bg-slate-900 text-white text-sm disabled:opacity-40 hover:bg-slate-800 transition shrink-0"
-        >
+        <input v-model="newTeacher.name" placeholder="Ism familiya"
+          class="flex-1 border border-slate-200 bg-slate-50 focus:bg-white rounded-lg px-3 py-2 text-sm outline-none focus:border-indigo-300" />
+        <input v-model="newTeacher.phone" placeholder="Telefon (90 123 45 67)"
+          class="flex-1 border border-slate-200 bg-slate-50 focus:bg-white rounded-lg px-3 py-2 text-sm outline-none focus:border-indigo-300 tabular-nums" />
+        <button @click="createTeacher" :disabled="!newTeacher.name || !newTeacher.phone || busy"
+          class="px-5 py-2 rounded-lg bg-slate-900 text-white text-sm disabled:opacity-40 hover:bg-slate-800 transition shrink-0">
           <AppIcon name="plus" /> Qo'shish
         </button>
       </div>
       <p class="text-[11px] text-slate-400 mt-2">
-        Boshlang'ich parol: <span class="font-mono">excel2024</span>
+        Boshlang'ich parol o'rnatilmaydi — ustoz birinchi marta ism va
+        familiyasini (masalan <span class="font-mono">Abdulloh Ibrohimov</span>)
+        parol sifatida kiritib tizimga kiradi, keyin xohlasa o'zgartiradi.
       </p>
     </div>
 
@@ -83,9 +70,7 @@
     </div>
 
     <!-- ══════════ RO'YXAT ══════════ -->
-    <div
-      class="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden"
-    >
+    <div class="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
       <div v-if="loading" class="p-16 text-center">
         <AppIcon name="spinner" class="w-7 h-7 text-indigo-400 animate-spin" />
         <p class="text-sm text-slate-400 mt-3">Yuklanmoqda...</p>
@@ -98,11 +83,8 @@
             <div class="flex-1 min-w-0">
               <div class="flex items-center gap-2">
                 <p class="font-semibold text-slate-800">{{ t.name }}</p>
-                <span
-                  v-if="t.is_senior"
-                  class="text-[10px] px-1.5 py-0.5 rounded-full bg-violet-50 text-violet-600"
-                  >katta ustoz</span
-                >
+                <span v-if="t.is_senior"
+                  class="text-[10px] px-1.5 py-0.5 rounded-full bg-violet-50 text-violet-600">katta ustoz</span>
               </div>
               <p class="text-xs text-slate-400 mt-0.5">
                 {{ t.students_count }} o'quvchi · {{ t.groups_count }} guruh
@@ -119,14 +101,14 @@
                   class="text-[10px] px-1.5 py-0.5 rounded-full bg-rose-50 text-rose-600 font-medium">
                   {{ t.unpaid_students }} ta to'lamadi
                 </span>
-                <span class="text-[10px] px-1.5 py-0.5 rounded-full bg-indigo-50 text-indigo-600 font-medium tabular-nums">
+                <span
+                  class="text-[10px] px-1.5 py-0.5 rounded-full bg-indigo-50 text-indigo-600 font-medium tabular-nums">
                   {{ money(t.collected) }}
                 </span>
                 <span v-if="t.expected" class="text-[10px] text-slate-400 tabular-nums">
                   / {{ money(t.expected) }} ({{ t.collected_percent }}%)
                 </span>
-                <button @click="openHistory(t)"
-                  class="text-[11px] text-indigo-500 hover:underline ml-1">
+                <button @click="openHistory(t)" class="text-[11px] text-indigo-500 hover:underline ml-1">
                   Tarix
                 </button>
               </div>
@@ -135,43 +117,29 @@
             <!-- Telefon: tahrir -->
             <div class="flex items-center gap-2 shrink-0">
               <template v-if="editing === t.id">
-                <input
-                  v-model="editPhone"
+                <input v-model="editPhone"
                   class="w-40 border border-indigo-300 rounded-lg px-3 py-1.5 text-sm outline-none tabular-nums"
-                  @keyup.enter="savePhone(t)"
-                />
-                <button
-                  @click="savePhone(t)"
-                  :disabled="busy"
-                  class="px-3 py-1.5 rounded-lg bg-slate-900 text-white text-xs hover:bg-slate-800 disabled:opacity-40"
-                >
+                  @keyup.enter="savePhone(t)" />
+                <button @click="savePhone(t)" :disabled="busy"
+                  class="px-3 py-1.5 rounded-lg bg-slate-900 text-white text-xs hover:bg-slate-800 disabled:opacity-40">
                   <AppIcon name="check" /> Saqlash
                 </button>
-                <button
-                  @click="editing = null"
-                  class="px-3 py-1.5 rounded-lg border border-slate-200 text-slate-400 text-xs hover:bg-slate-50"
-                >
+                <button @click="editing = null"
+                  class="px-3 py-1.5 rounded-lg border border-slate-200 text-slate-400 text-xs hover:bg-slate-50">
                   <AppIcon name="x" />
                 </button>
               </template>
               <template v-else>
-                <span
-                  :class="[
-                    'tabular-nums text-sm',
-                    t.phone_complete ? 'text-slate-600' : 'text-rose-500',
-                  ]"
-                  >{{ t.phone }}</span
-                >
-                <button
-                  @click="startEdit(t)"
-                  class="px-3 py-1.5 rounded-lg border border-slate-200 text-slate-500 text-xs hover:bg-slate-50 hover:text-indigo-500 transition"
-                >
+                <span :class="[
+                  'tabular-nums text-sm',
+                  t.phone_complete ? 'text-slate-600' : 'text-rose-500',
+                ]">{{ t.phone }}</span>
+                <button @click="startEdit(t)"
+                  class="px-3 py-1.5 rounded-lg border border-slate-200 text-slate-500 text-xs hover:bg-slate-50 hover:text-indigo-500 transition">
                   <AppIcon name="edit" /> Tahrirlash
                 </button>
-                <button
-                  @click="askDelete(t)"
-                  class="px-3 py-1.5 rounded-lg border border-slate-200 text-slate-400 text-xs hover:bg-rose-50 hover:text-rose-500 hover:border-rose-200 transition"
-                >
+                <button @click="askDelete(t)"
+                  class="px-3 py-1.5 rounded-lg border border-slate-200 text-slate-400 text-xs hover:bg-rose-50 hover:text-rose-500 hover:border-rose-200 transition">
                   <AppIcon name="trash" />
                 </button>
               </template>
@@ -186,11 +154,8 @@
     </div>
 
     <!-- ══════════ O'CHIRISH MODALI ══════════ -->
-    <div
-      v-if="deleting"
-      class="fixed inset-0 bg-slate-900/40 flex items-center justify-center p-4 z-40"
-      @click.self="deleting = null"
-    >
+    <div v-if="deleting" class="fixed inset-0 bg-slate-900/40 flex items-center justify-center p-4 z-40"
+      @click.self="deleting = null">
       <div class="bg-white rounded-2xl p-5 w-full max-w-md shadow-xl">
         <p class="font-semibold text-slate-800 mb-1">
           {{ deleting.name }} o'chirilsinmi?
@@ -202,32 +167,21 @@
           bor. Ular kimga o'tsin?
         </p>
 
-        <select
-          v-model="deleteTo"
-          class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm outline-none focus:border-indigo-300 mb-4"
-        >
+        <select v-model="deleteTo"
+          class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm outline-none focus:border-indigo-300 mb-4">
           <option value="">Hech kimga — biriktirilmagan holga tushsin</option>
-          <option
-            v-for="t in teachers.filter((x) => x.id !== deleting.id)"
-            :key="t.id"
-            :value="t.id"
-          >
+          <option v-for="t in teachers.filter((x) => x.id !== deleting.id)" :key="t.id" :value="t.id">
             {{ t.name }}
           </option>
         </select>
 
         <div class="flex gap-2 justify-end">
-          <button
-            @click="deleting = null"
-            class="px-4 py-2 rounded-lg border border-slate-200 text-slate-500 text-sm hover:bg-slate-50"
-          >
+          <button @click="deleting = null"
+            class="px-4 py-2 rounded-lg border border-slate-200 text-slate-500 text-sm hover:bg-slate-50">
             Bekor
           </button>
-          <button
-            @click="doDelete"
-            :disabled="busy"
-            class="px-4 py-2 rounded-lg bg-rose-500 text-white text-sm hover:bg-rose-600 disabled:opacity-40"
-          >
+          <button @click="doDelete" :disabled="busy"
+            class="px-4 py-2 rounded-lg bg-rose-500 text-white text-sm hover:bg-rose-600 disabled:opacity-40">
             O'chirish
           </button>
         </div>
@@ -235,7 +189,8 @@
     </div>
 
     <!-- ══════════ USTOZ TARIXI ══════════ -->
-    <div v-if="historyFor" class="fixed inset-0 bg-slate-900/40 flex items-start justify-center p-4 z-40 overflow-y-auto"
+    <div v-if="historyFor"
+      class="fixed inset-0 bg-slate-900/40 flex items-start justify-center p-4 z-40 overflow-y-auto"
       @click.self="historyFor = null">
       <div class="bg-white rounded-2xl w-full max-w-4xl shadow-xl my-8">
         <div class="p-5 border-b border-slate-100 flex flex-wrap items-start justify-between gap-3">
@@ -358,8 +313,7 @@
               Pul harakati ({{ money(history.totals.received_in_range) }})
             </p>
             <div class="rounded-xl border border-slate-200 max-h-56 overflow-y-auto divide-y divide-slate-100">
-              <div v-for="e in history.entries" :key="e.id"
-                class="px-3 py-2 text-xs flex items-center gap-3">
+              <div v-for="e in history.entries" :key="e.id" class="px-3 py-2 text-xs flex items-center gap-3">
                 <span class="text-slate-400 tabular-nums shrink-0">{{ e.created_at }}</span>
                 <span class="text-slate-600 flex-1 min-w-0 truncate">{{ e.student_name }}</span>
                 <span class="text-slate-300 tabular-nums shrink-0">{{ e.month }}</span>
@@ -374,10 +328,8 @@
       </div>
     </div>
 
-    <p
-      v-if="toast"
-      class="fixed top-4 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-sm px-4 py-2 rounded-lg shadow-lg z-50"
-    >
+    <p v-if="toast"
+      class="fixed top-4 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-sm px-4 py-2 rounded-lg shadow-lg z-50">
       {{ toast }}
     </p>
   </div>
